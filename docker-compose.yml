@@ -1,0 +1,17 @@
+services:
+  cosmos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cosmos
+    ports:
+      - '3000:3000'
+    expose:
+      - 3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    labels:
+      -  "traefik.enable: true"
+      -  "traefik.http.routers.cosmos.entryPoints: https"
