@@ -2,42 +2,53 @@ env:
   browser: true
   es2021: true
   node: true
+  "cypress/globals": true
 
-parser: "@typescript-eslint/parser" # Specifies the parser for TypeScript
+parser: "@typescript-eslint/parser"
 
 parserOptions:
-  ecmaVersion: latest # Use the latest ECMAScript standard
-  sourceType: "module" # Enables ES6 module features
+  ecmaVersion: latest
+  sourceType: module
   ecmaFeatures:
-    jsx: true # Enables JSX since we're using React
+    jsx: true
 
 settings:
   react:
-    version: "detect" # Automatically detects the React version
+    version: "detect"
 
 extends:
-  - "eslint:recommended" # Use the recommended rules from ESLint
-  - "plugin:@typescript-eslint/recommended" # Use the recommended rules from the @typescript-eslint/eslint-plugin
-  - "plugin:react/recommended" # Use the recommended rules from eslint-plugin-react
-  - "plugin:react-hooks/recommended" # Ensures that hooks are used correctly
-  - "plugin:prettier/recommended" # Enables eslint-plugin-prettier and displays prettier errors as ESLint errors
+  - "eslint:recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:react/recommended"
+  - "plugin:react-hooks/recommended"
+  - "plugin:prettier/recommended"
+  - "plugin:cypress/recommended"
 
 plugins:
-  - "@typescript-eslint" # Adds the TypeScript plugin
-  - "react" # Adds React specific linting rules
-  - "react-hooks" # Adds rules for React hooks
-  - "prettier" # Runs Prettier as an ESLint rule
+  - "@typescript-eslint"
+  - "react"
+  - "react-hooks"
+  - "prettier"
+  - "cypress"
 
 rules:
-  prettier/prettier: "error" # Ensures that prettier errors are shown as ESLint errors
-  react/react-in-jsx-scope: "off" # For React 17+ you do not need to import React when using JSX
-  react/prop-types: "off" # Disables prop-types rules, as we use TypeScript for type checking
-  "@typescript-eslint/explicit-module-boundary-types": "off" # Disables the need to define return types
-  "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }] # Allows unused variables that are prefixed with an underscore
-  "@typescript-eslint/no-explicit-any": "off" # Disables the rule for using 'any' type
-  "no-console": ["warn", { allow: ["warn", "error"] }] # Warns about console.log usage, allows console.warn and console.error
+  prettier/prettier: "error"
+  react/react-in-jsx-scope: "off"
+  react/prop-types: "off"
+  "@typescript-eslint/explicit-module-boundary-types": "off"
+  "@typescript-eslint/no-unused-vars":
+    - "error"
+    - argsIgnorePattern: "^_"
+  "@typescript-eslint/no-explicit-any": "off"
+  no-console:
+    - "warn"
+    - allow:
+        - "warn"
+        - "error"
 
 ignorePatterns:
-  - "node_modules/" # Ignore all files within node_modules
-  - ".next/" # Ignore all files within .next (Next.js build folder)
-  - "out/" # Ignore all files within out (Next.js export folder)
+  - "node_modules/"
+  - ".next/"
+  - "out/"
+  - "cypress/videos/"
+  - "cypress/screenshots/"

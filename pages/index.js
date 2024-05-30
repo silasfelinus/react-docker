@@ -18,7 +18,7 @@ export default function SplashPage() {
         color: "white",
       }}
     >
-      <h1>Welcome to Our App</h1>
+      <h1>Welcome to Cosmos</h1>
       {!loading && !session && (
         <>
           <Link href="/auth/signin">
