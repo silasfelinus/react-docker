@@ -15,7 +15,7 @@ describe('Register Component', () => {
     expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
-    expect(screen.getByText('Register')).toBeInTheDocument();
+    expect(screen.getAllByText('Register')).toHaveLength(2); // One for <h1> and one for <button>
   });
 
   it('handles form submission successfully', async () => {
@@ -27,7 +27,7 @@ describe('Register Component', () => {
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'password123' } });
 
-    fireEvent.click(screen.getByText('Register'));
+    fireEvent.click(screen.getByText('Register', { selector: 'button' })); // Specify button element
 
     expect(fetchMock).toHaveBeenCalledWith('/api/auth/register', expect.anything());
     await screen.findByText(/Check your email/i);
@@ -42,7 +42,7 @@ describe('Register Component', () => {
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'password123' } });
 
-    fireEvent.click(screen.getByText('Register'));
+    fireEvent.click(screen.getByText('Register', { selector: 'button' })); // Specify button element
 
     await screen.findByText(/User already exists/i);
   });

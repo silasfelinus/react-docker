@@ -5,7 +5,6 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import reactPlugin from "eslint-plugin-react";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
-import React from "react";
 import jestPlugin from "eslint-plugin-jest";
 
 export default [
@@ -41,12 +40,12 @@ export default [
     env: {
       browser: true,
       es2021: true,
-      "jest/globals": true, // Add this line
+      "jest/globals": true,
     },
     rules: {
       "prettier/prettier": "error",
-      "react/react-in-jsx-scope": "off", // Turn off the rule for React 17+
-      "react/prop-types": "off", // Turn off prop-types rule if not using prop-types
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
       ...jsPlugin.configs.recommended.rules,
       ...tsPlugin.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
