@@ -11,8 +11,11 @@ const customJestConfig = {
   },
   testEnvironment: 'jest-environment-jsdom',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/babel-jest-transformer.js',
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(lowdb)/)', // Add your module here
+  ],
 };
 
 module.exports = createJestConfig(customJestConfig);
