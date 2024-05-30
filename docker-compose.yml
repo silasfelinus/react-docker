@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: cosmos
     ports:
-      - '3010:3000'
+      - "3010:3000"
     expose:
       - 3000
     volumes:

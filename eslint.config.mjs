@@ -5,7 +5,6 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import reactPlugin from "eslint-plugin-react";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
-import jestPlugin from "eslint-plugin-jest";
 
 export default [
   {
@@ -18,7 +17,6 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        jest: true,
       },
       parserOptions: {
         ecmaFeatures: {
@@ -35,12 +33,10 @@ export default [
       prettier: prettierPlugin,
       "@typescript-eslint": tsPlugin,
       react: reactPlugin,
-      jest: jestPlugin,
     },
     env: {
       browser: true,
       es2021: true,
-      "jest/globals": true,
     },
     rules: {
       "prettier/prettier": "error",
