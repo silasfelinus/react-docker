@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { signIn } from "next-auth/client";
-import React from "react";
+import { signIn } from "next-auth/react";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -20,7 +19,7 @@ export default function Register() {
     const data = await res.json();
 
     if (res.status === 201) {
-      // Automatically sign in the user after registration
+      setMessage("Check your email for verification.");
       await signIn("email", { email });
     } else {
       setMessage(data.message);
