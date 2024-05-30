@@ -1,4 +1,4 @@
-const nextJest = require('next/jest');
+import nextJest from 'next/jest';
 
 const createJestConfig = nextJest({
   dir: './',
@@ -11,11 +11,11 @@ const customJestConfig = {
   },
   testEnvironment: 'jest-environment-jsdom',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/babel-jest-transformer.js',
+    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/babel-transformer.js',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(lowdb)/)', // Add your module here
+    'node_modules/(?!(lowdb)/)', // Transform lowdb module
   ],
 };
 
-module.exports = createJestConfig(customJestConfig);
+export default createJestConfig(customJestConfig);
